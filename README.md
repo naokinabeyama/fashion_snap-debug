@@ -1,4 +1,5 @@
-# FashionSnap
+# アプリ名
+FashionSnap
 
 ## サイト概要
 洋服の写真、コメントの投稿。
