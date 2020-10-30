@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FashionSnap</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <script src="https://kit.fontawesome.com/5c0ff08b2a.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <span>Fashion Snap</span>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li class="">
+              <%= link_to 'マイページ', user_path(current_user) %>
+            </li>
+            <li class="">
+              <%= link_to '投稿一覧', posts_path %>
+            </li>
+            <li>
+              <%= link_to "ユーザー一覧", users_path %>
+            </li>
+            <li class="">
+              <%= link_to "About", home_about_path %>
+            </li>
+            <li class="">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="">
+              <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+            <li class="">
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+            <li class="">
+              <%= link_to "About", home_about_path %>
+            </li>
+            <li>
+              <%= link_to "投稿一覧", posts_path %>
+            </li>
+            <li>
+              <%= link_to "ユーザー一覧", users_path %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+     </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>

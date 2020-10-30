@@ -1,0 +1,29 @@
+<body>
+<div class="row">
+    <div class="col-xs-2">
+    <h3>探す</h3>
+    <div class="">
+      <%= link_to "ユーザーを探す", users_search_path %>
+    </div>
+    <div class="">
+      <%= link_to "投稿を探す", posts_search_path %>
+    </div>
+</div>
+<h2>フォロワー一覧</h2>
+
+<% @users.each do |user| %>
+
+<%= link_to user_path(user) do %>
+<%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+<% end %>
+
+<%= user.name %>
+
+<%= user.gender %>
+
+フォロー： <%= user.followings.count %>
+フォロワー： <%= user.followers.count %>
+
+<%= render 'relationships/follow_button', user: user %>
+<% end %>
+</body>

@@ -1,0 +1,25 @@
+<body>
+<h2>投稿画面</h2>
+
+<%= form_with(model: @post, local: true) do |f| %>
+
+	<div class="">
+		<%= f.label :写真 %>
+		<%= f.attachment_field :post_image, class: "col-xs-12 book_title" %>
+	</div>
+
+	<div class="">
+		<%= f.label :タイトル %>
+		<%= f.text_field :title, class: "col-xs-12 book_title" %>
+	</div>
+
+	<div class="">
+		<%= f.label :説明文 %>
+		<%= f.text_area :body, class: "col-xs-12 book_body" %>
+	</div>
+
+	<div class="">
+		<%= f.submit "投稿", class: "btn btn-primary col-xs-5" %>
+	</div>
+<% end %>
+</body>

@@ -1,0 +1,33 @@
+<body>
+<h1>users#edit</h1>
+
+<%= form_with(model: @user, local: true) do |f| %>
+
+	<div class="field">
+		<%= f.label :プロフィール画像 %>
+		<%= f.attachment_field :profile_image, class: "user_image" %>
+	</div>
+
+	<div class="field">
+		<%= f.label :名前又はニックネーム %>
+		<%= f.text_field :name, class: "name" %>
+	</div>
+
+	<div class="field">
+		<%= f.label :性別 %>
+		<%= f.radio_button :gender, "MEN" %>MEN
+		<%= f.radio_button :gender, "WOMEN" %>WOMEN
+	</div>
+
+	<div class="field">
+		<%= f.label :自己紹介 %>
+		<%= f.text_area :introduction, class: "introduction" %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "変更する" %>
+	</div>
+
+<% end %>
+
+</body>

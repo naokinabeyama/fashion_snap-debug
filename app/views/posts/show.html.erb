@@ -1,0 +1,76 @@
+<body>
+<div class="row">
+    <div class="col-xs-2">
+    <h3>探す</h3>
+    <div class="">
+      <%= link_to "ユーザーを探す", users_search_path %>
+    </div>
+    <div class="">
+      <%= link_to "投稿を探す", posts_search_path %>
+    </div>
+</div>
+<div class="col-xs-9">
+<h1>post/show</h1>
+
+<div class="">
+	<%= link_to user_path(@user) do %>
+		<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+		<%= @user.name %>
+		<%= @user.gender %>
+	<% end %>
+</div>
+<div class="">
+	<%= attachment_image_tag @post, :post_image, :fill, 250, 350, fallback: "no_image.jpg" %>
+	<%= @post.title %>
+	<%= @post.body %>
+	<% unless @user == current_user %>
+		<div id="favorites_buttons_<%= @post.id %>">
+			<%= render partial: 'favorites/favorite', locals: {post: @post} %>
+		</div>
+	<% end %>
+	<div class="">
+		コメント数：
+		<%= @post.post_comments.count %>
+	</div>
+</div>
+	<% if @user == current_user %>
+		<%= link_to "編集", edit_post_path(@post) %>
+		<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+	<% end %>
+
+	<ol>
+		<% @post.post_comments.each do |post_comment| %>
+	    	<li class="comment">
+	      		<div class="comment-body bb">
+	        		<div class="comment-avatar">
+	          			<div class="avatar">
+	            			<%= attachment_image_tag post_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+	          			</div>
+	        		</div>
+	        		<div class="comment-text">
+	          			<div class="comment-author clearfix">
+	            			<%= post_comment.user.name %>
+	          			</div>
+	          			<div class="comment-entry"><%= post_comment.comment %></div>
+	          				<% if post_comment.user == current_user %>
+	          				<div>
+	              				<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+	            			</div>
+							<% end %>
+	       			</div>
+	      		</div>
+	    	</li>
+	 	<% end %>
+	</ol>
+		<% unless @user == current_user %>
+		<%= form_with(model: [@post, @post_comment], local: true) do |f| %>
+			<div class="row">
+		    <div class="col-sm-8">
+		      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+		      <%= f.submit "送信", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+		    </div>
+		    </div>
+		<% end %>
+		<% end %>
+</div>
+</body>

@@ -1,0 +1,25 @@
+<body>
+<div class="row">
+    <div class="col-xs-2">
+    <h3>探す</h3>
+    <div class="">
+      <%= link_to "ユーザーを探す", users_search_path %>
+    </div>
+    <div class="">
+      <%= link_to "投稿を探す", posts_search_path %>
+    </div>
+</div>
+<div class="col-xs-9">
+<h1>Users#index</h1>
+
+<% @users.each do |user| %>
+
+	<%= link_to user_path(user) do %>
+		<%= attachment_image_tag(user, :profile_image, :fill, 250, 350, fallback: "no_image.jpg") %>
+	<% end %>
+			<%= user.name %>
+			<%= user.gender %>
+		<%#= render 'relationships/follow_button', user: @user %>
+<% end %>
+</div>
+</body>
