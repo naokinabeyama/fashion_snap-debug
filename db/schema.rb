@@ -14,9 +14,12 @@ ActiveRecord::Schema.define(version: 2020_10_27_133215) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "post_id"
+    t.index ["post_id"], name: "index_favorites_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_favorites_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "homes", force: :cascade do |t|
