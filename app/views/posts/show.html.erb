@@ -1,42 +1,49 @@
-<body>
-<div class="row">
-    <div class="col-xs-2">
-    <h3>探す</h3>
-    <div class="">
-      <%= link_to "ユーザーを探す", users_search_path %>
-    </div>
-    <div class="">
-      <%= link_to "投稿を探す", posts_search_path %>
-    </div>
-</div>
-<div class="col-xs-9">
-<h1>post/show</h1>
-
-<div class="">
+<div class="post-show-user-profiel">
+<div class="post-show-user-image">
 	<%= link_to user_path(@user) do %>
-		<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
-		<%= @user.name %>
-		<%= @user.gender %>
+		<%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg",  class: "img-circle" %>
 	<% end %>
 </div>
-<div class="">
-	<%= attachment_image_tag @post, :post_image, :fill, 250, 350, fallback: "no_image.jpg" %>
-	<%= @post.title %>
-	<%= @post.body %>
-	<% unless @user == current_user %>
-		<div id="favorites_buttons_<%= @post.id %>">
-			<%= render partial: 'favorites/favorite', locals: {post: @post} %>
+<div class="clearfix">
+		<div class="post-show-user-text">
+			<%= link_to user_path(@user) do %>
+				<strong class="post-show-user-name"> <%= @user.name %> </strong>
+			<% end %>
+			<%= @user.gender %>
 		</div>
-	<% end %>
-	<div class="">
-		コメント数：
+</div>
+</div>
+<div class="post-show-main clearfix">
+	<div class="post-show-post-image">
+		<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg" %>
+</div>
+	<div class="post-show-post-text">
+		<div class="post-show-post-title">
+		<strong>タイトル：</strong>
+			<%= @post.title %>
+		</div>
+		<div class="post-show-post-body">
+			<%= @post.body %>
+		</div>
+		<div class="post-show-favorites">
+			<% unless @user == current_user %>
+				<div id="favorites_buttons_<%= @post.id %>">
+					<%= render partial: 'favorites/favorite', locals: {post: @post} %>
+				</div>
+			<% end %>
+		</div>
+	<div class="post-show-comment">
 		<%= @post.post_comments.count %>
+		：コメント
 	</div>
 </div>
-	<% if @user == current_user %>
-		<%= link_to "編集", edit_post_path(@post) %>
-		<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
-	<% end %>
+	<div class="post-show-edit">
+		<% if @user == current_user %>
+			<%= link_to "編集", edit_post_path(@post) %>
+			<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+		<% end %>
+	</div>
+	</div>
 
 	<ol>
 		<% @post.post_comments.each do |post_comment| %>
@@ -44,17 +51,18 @@
 	      		<div class="comment-body bb">
 	        		<div class="comment-avatar">
 	          			<div class="avatar">
-	            			<%= attachment_image_tag post_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+	          				<%= link_to user_path(post_comment.user) do %>
+	            				<%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",  class: "img-circle" %>
+	            			<% end %>
 	          			</div>
 	        		</div>
 	        		<div class="comment-text">
 	          			<div class="comment-author clearfix">
-	            			<%= post_comment.user.name %>
+	            			<strong> <%= post_comment.user.name %> </strong>
 	          			</div>
-	          			<div class="comment-entry"><%= post_comment.comment %></div>
+	          			<div class="comment-entry"><%= post_comment.comment %>
 	          				<% if post_comment.user == current_user %>
-	          				<div>
-	              				<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+	              				<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-sm" %>
 	            			</div>
 							<% end %>
 	       			</div>
@@ -73,4 +81,3 @@
 		<% end %>
 		<% end %>
 </div>
-</body>

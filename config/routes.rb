@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   get '/home/about' => 'home#about'
   get 'users/followings/:follow_id' => 'users#followings',as: 'user_followings'
   get 'users/followers/:follow_id' => 'users#followers',as: 'user_followers'
-  get '/users/search/' => 'users#search'
-  get '/posts/search/' => 'posts#search'
   devise_for :users
-  root 'home#top'
+  root 'posts#top'
   resources :users, only: [:index, :show, :new, :edit, :create, :update, :new]
   resources :posts, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
   	resource :favorites, only: [:create, :destroy]

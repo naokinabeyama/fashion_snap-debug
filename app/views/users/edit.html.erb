@@ -1,16 +1,16 @@
-<body>
-<h1>users#edit</h1>
+<div class="edit">
+<h1>プロフィール編集</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
 
 	<div class="field">
 		<%= f.label :プロフィール画像 %>
-		<%= f.attachment_field :profile_image, class: "user_image" %>
+		<%= f.attachment_field :profile_image %>
 	</div>
 
 	<div class="field">
 		<%= f.label :名前又はニックネーム %>
-		<%= f.text_field :name, class: "name" %>
+		<%= f.text_field :name %>
 	</div>
 
 	<div class="field">
@@ -21,13 +21,12 @@
 
 	<div class="field">
 		<%= f.label :自己紹介 %>
-		<%= f.text_area :introduction, class: "introduction" %>
+		<%= f.text_area :introduction %>
 	</div>
 
 	<div class="actions">
 		<%= f.submit "変更する" %>
 	</div>
-
 <% end %>
+</div>
 
-</body>

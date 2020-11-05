@@ -1,27 +1,27 @@
-<body>
+<div class="edit">
 <h2>編集画面</h2>
 
 <%= form_with(model: @post, local: true) do |f| %>
 
 
-	<div class="field row">
+	<div class="field">
 		<%= f.label :写真 %>
-		<%= f.attachment_field :post_image, class: "col-xs-12 book_title" %>
+		<%= f.attachment_field :post_image %>
 	</div>
 
-	<div class="field row">
+	<div class="field">
 		<%= f.label :タイトル %>
-		<%= f.text_field :title, class: "col-xs-12 book_title" %>
+		<%= f.text_field :title %>
 	</div>
 
-	<div class="field row">
+	<div class="field">
 		<%= f.label :説明文 %>
-		<%= f.text_area :body, class: "col-xs-12 book_body" %>
+		<%= f.text_area :body %>
 	</div>
 
-	<div class="actions row">
-		<%= f.submit "投稿", class: "btn btn-primary col-xs-12" %>
+	<div class="actions">
+		<%= f.submit "投稿", class: "btn btn-primary" %>
 	</div>
 <% end %>
+</div>
 
-</body>

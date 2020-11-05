@@ -1,30 +1,28 @@
-<body>
-<div class="row">
-    <div class="col-xs-2">
-    <h3>探す</h3>
-    <div class="">
-      <%= link_to "ユーザーを探す", users_search_path %>
-    </div>
-    <div class="">
-      <%= link_to "投稿を探す", posts_search_path %>
-    </div>
-</div>
-<div class="col-xs-9">
-<h2>post#index</h2>
 
-	<% @posts.each do |post| %>
+<h2>投稿一覧</h2>
 
-		<%= link_to post_path(post) do %>
-			<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg") %>
+<%= form_with url: posts_path, method: :get, local: true do |f| %>
+  <%= f.text_field :search %>
+  <%= f.submit '検索', name: nil %>
+<% end %>
+
+	<div class="user-post">
+		<% @posts.each do |post| %>
+			<div class="post-index-image">
+				<%= link_to post_path(post) do %>
+					<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg") %>
+				<% end %>
+				<div class="">
+					<%= link_to post_path(post) do %>
+						<strong class="user-post-title"> タイトル： <%= post.title %> </strong>
+					<% end %>
+				</div>
+				<div class="">
+				<%= link_to user_path(post.user) do %>
+					<%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",  class: "img-circle") %>
+				<% end %>
+				<%= post.user.name %>
+				</div>
+			</div>
 		<% end %>
-
-	<div class="">
-		<%= link_to user_path(post.user) do %>
-			<%= attachment_image_tag(post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg") %>
-		<% end %>
-		<%= post.user.name %>
 	</div>
-
-	<% end %>
-</div>
-</body>

@@ -1,64 +1,65 @@
-<body>
-<div class="row">
-    <div class="col-xs-2">
-    <h3>探す</h3>
-    <div class="">
-      <%= link_to "ユーザーを探す", users_search_path %>
-    </div>
-    <div class="">
-      <%= link_to "投稿を探す", posts_search_path %>
-    </div>
-</div>
-<div class="col-xs-9">
-<h1>マイページ</h1>
-
 <!-- ユーザー詳細 -->
-<div class="">
-	<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg" %>
+<div class="user-image">
+	<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", class: "img-circle" %>
+</div>
+
+	<div class="user_introduction clearfix">
+		<div class="name">
+			<strong> <%= @user.name %> </strong>
+		</div>
+		<div class="gender">
+			<%= @user.gender %>
+		</div>
+		<div class="introduction">
+			<%= @user.introduction %>
+		</div>
+
+	<div class="follow-text">
+		<%= link_to user_followings_path(@user) do %>
+		フォロー
+		<%= @user.followings.count %>
+		<% end %>
+
+		<%= link_to user_followers_path(@user) do %>
+		フォロワー
+		<%= @user.followers.count %>
+		<%  end %>
+	</div>
+
+	</div>
+	<div class="follow-btn">
+		<%= render 'relationships/follow_button', user: @user %>
+	</div>
 
 	<% if @user == current_user %>
-		<%= link_to "プロフィール変更", edit_user_path %>
-	<% end %>
-
-	<%= @user.name %>
-
-	<%= @user.gender %>
-
-	<%= @user.introduction %>
-
-	<%= link_to user_followings_path(@user) do %>
-	フォロー
-	<%= @user.followings.count %>
-	<% end %>
-
-	<%= link_to user_followers_path(@user) do %>
-	フォロワー
-	<%= @user.followers.count %>
-	<%  end %>
-
-	<%= render 'relationships/follow_button', user: @user %>
-
-	<% if @user == current_user %>
-		<div class="">
-			<%= link_to "投稿する", new_post_path, class: 'btn btn-primary' %>
+		<div class="user-post-profiel">
+			<%= link_to "プロフィール変更", edit_user_path, class: 'btn btn-success' %>
+			<div class="new-post">
+				<%= link_to "投稿する", new_post_path, class: 'btn btn-primary btn-lg' %>
+			</div>
 		</div>
 	<% end %>
-</div>
+
 <!-- ユーザー詳細 -->
 
 <!-- ユーザー投稿一覧 -->
-<% @posts.each do |post| %>
-
-	<%= link_to post_path(post) do %>
-		<%= attachment_image_tag(post, :post_image, :fill, 250, 300) %>
-	<% end %>
-
-	<%= post.title %>
-	<div class="">
-		コメント数:
-		<%= post.post_comments.count %>
+<div class="user-post-all">
+	<h2 class="user-post-main">投稿</h2>
+	<div class="user-post">
+		<% @posts.each do |post| %>
+			<%= link_to post_path(post) do %>
+			<div class="post-image">
+				<%= attachment_image_tag(post, :post_image, :fill, 250, 300) %>
+			</div>
+			<strong class="user-post-title"> タイトル：　<%= post.title %> </strong>
+			<% end %>
+			<div class="user-post-favorites">
+			<% unless @user == current_user %>
+				<div id="favorites_buttons_<%= post.id %>">
+					<%= render partial: 'favorites/favorite', locals: {post: post} %>
+				</div>
+			<% end %>
+			</div>
+		<% end %>
 	</div>
-<% end %>
 <!-- ユーザー投稿一覧 -->
-</div>
-</body>

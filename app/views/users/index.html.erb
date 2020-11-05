@@ -1,25 +1,42 @@
-<body>
-<div class="row">
-    <div class="col-xs-2">
-    <h3>探す</h3>
-    <div class="">
-      <%= link_to "ユーザーを探す", users_search_path %>
-    </div>
-    <div class="">
-      <%= link_to "投稿を探す", posts_search_path %>
-    </div>
-</div>
-<div class="col-xs-9">
-<h1>Users#index</h1>
+<h1>ユーザー一覧</h1>
 
-<% @users.each do |user| %>
-
-	<%= link_to user_path(user) do %>
-		<%= attachment_image_tag(user, :profile_image, :fill, 250, 350, fallback: "no_image.jpg") %>
-	<% end %>
-			<%= user.name %>
-			<%= user.gender %>
-		<%#= render 'relationships/follow_button', user: @user %>
+<%= form_with url: users_path, method: :get, local: true do |f| %>
+  <%= f.text_field :search %>
+  <%= f.submit '検索', name: nil %>
 <% end %>
+
+<div class="table">
+	<table>
+		<% @users.each do |user| %>
+		<tbody>
+			<tr>
+				<div class="user-index-image">
+					<td>
+						<%= link_to user_path(user) do %>
+							<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", class: "img-circle") %>
+						<% end %>
+					</td>
+					<td class="user-index-user-name">
+						<strong> <%= user.name %> </strong>
+					</td>
+					<td class="user-index-user-gender">
+						<%= user.gender %>
+					</td>
+					<td class="user-index-user-followers">
+						<%= link_to user_followers_path(user) do %>
+							フォロワー
+							<%= user.followers.count %>
+						<%  end %>
+					</td>
+				      <div class="user-index-follow">
+				      	<td>
+						    <%= render 'relationships/follow_button', user: user %>
+						</td>
+				      </div>
+				</div>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>
 </div>
-</body>
+

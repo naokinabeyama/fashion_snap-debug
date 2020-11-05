@@ -22,16 +22,291 @@
   box-sizing: border-box;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .container {
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
 }
-header {
-    color: white;
-}
 
 body {
-    margin-top: 51px;
+    background-image: url(marble.jpg);
+    background-size: cover;
+    margin: 60px auto;
+    width: 1100px;
+}
+
+.about {
+	background-image: url(fashion-918446_1920.jpg);
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+}
+
+.about-top-text {
+	text-align: center;
+	padding-top: 100px;
+	color: #fff;
+}
+
+.about-top-title {
+	font-size: 130px;
+	font-family: "impact";
+}
+
+.about-top-comment {
+	font-size: 40px;
+}
+
+.about-text {
+	margin-top: 70px;
+	text-align: center;
+}
+
+.about-title {
+	font-size: 40px;
+}
+
+.about-comment {
+	margin-top: 50px;
+	font-size: 20px;
+}
+
+.fashion-snap {
+	font-size: 30px;
+	font-family: "impact";
+}
+
+.title {
+	color: black;
+}
+
+.field {
+	margin: 20px;
+	font-size: 18px;
+}
+
+.actions {
+	font-size: 20px;
+}
+
+.edit {
+	margin-left: 100px;
+}
+
+.user-image {
+	float: left;
+	margin: 10px 40px 30px 0;
+}
+
+.name {
+	font-size: 30px;
+	padding-top: 20px;
+}
+
+.gender {
+	padding: 10px;
+}
+
+.follow-text {
+	padding-top: 30px;
+}
+
+.follow-btn {
+	padding-left: 400px;
+}
+
+.user-post-profiel {
+	padding: 10px;
+}
+
+.new-post {
+	text-align: center;
+}
+
+.user-post-all {
+	margin: 80px 0 40px 0;
+}
+
+.user-post {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px 0 10px 50px;
+	text-align: center;
+	width: 1100px
+}
+
+.user-post-main {
+	margin-bottom: 30px;
+	font-size: 40px;
+
+}
+
+.user-post-title {
+	font-size: 18px;
+	color: #aaaaaa;
+}
+
+.post-image {
+	padding-bottom: 10px;
+}
+
+.user-post-favorites {
+	margin: 310px 10px 50px 0;
+	font-size: 15px;
+}
+
+.favorites {
+	color: black;
+}
+
+.user-index-follow {
+	margin: 10px 0 40px 20px;
+}
+
+.user-index-image {
+	margin-top: 30px;
+}
+
+.user-index-user-name {
+	font-size: 20px;
+	padding-left: 20px;
+}
+
+.user-index-user-gender {
+	font-size: 15px;
+	padding: 0 20px;
+}
+
+.user-index-user-followers {
+	padding-right: 20px;
+}
+
+.post-show-user-profiel {
+	padding: 25px 0 0 30px;
+}
+
+.post-show-user-image {
+	float: left;
+}
+
+.post-show-user-text {
+	padding-top: 50px;
+	float: left;
+}
+
+.post-show-user-name {
+	font-size: 18px;
+	padding: 0 30px;
+	color: black;
+}
+
+.post-show-main {
+	margin: 70px 0;
+}
+
+.post-show-post-image {
+	float: left;
+}
+
+.post-show-post-text {
+	float: left;
+	margin-left: 90px;
+}
+
+.post-show-post-title {
+	font-size: 30px;
+	color: #aaaaaa;
+}
+
+.post-show-post-body {
+	padding: 60px 0;
+	font-size: 20px;
+}
+
+.post-show-favorites {
+	text-align: right;
+	font-size: 15px;
+}
+
+.post-show-comment {
+	text-align: right;
+	font-size: 15px;
+}
+
+ol {
+	margin: 30px 0 20px 30px;
+}
+
+.post-show-edit {
+	padding-left: 20px;
+	float: right;
+}
+
+.post-index-image {
+	padding: 30px 60px 30px 40px;
+}
+
+.top-image {
+	background-image: url(photography-336685_1920.jpg);
+	height: 500px;
+	background-size: cover;
+}
+
+.top-post-image {
+	padding-right: 80px;
+}
+
+.top-title {
+	text-align: center;
+	color: #fff;
+	font-size: 100px;
+	font-family: "impact";
+	line-height: 500px;
+}
+
+.top-ranking {
+	font-size: 27px;
+	float: left;
+}
+
+.top-favorite {
+	font-size: 20px;
+	padding: 5px 0 15px 50px;
+	float: left;
+}
+
+.top-user-post {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px 0 10px 50px;
+}
+
+.top-main {
+	margin-top: 50px;
+}
+
+.top-relationship {
+	font-size: 20px;
+	padding: 5px 0 15px 10px;
+	float: left;
+}
+
+.top-post-image-follower {
+	padding-right: 180px;
+}
+
+.more {
+	text-align: right;
+	margin: 40px 0;
+}
+
+.more-text {
+	font-size: 15px;
 }

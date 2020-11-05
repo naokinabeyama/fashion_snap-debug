@@ -4,8 +4,8 @@ FashionSnap
 ## サイト概要
 洋服の写真、コメントの投稿。
 お気に入りの洋服にいいね。
-ランキングをつけて人気の写真を分かるようにする。（導入するかは未定）
-検索機能で見たいアイテムが検索できる。（導入するかは未定）
+ランキングをつけて人気の写真、ユーザーを分かるようにする。
+検索機能で投稿、ユーザーが検索できる。
 お気に入りの人をフォロー出来る。
 
 ### サイトテーマ
@@ -33,5 +33,4 @@ https://docs.google.com/spreadsheets/d/1RgVgRzAPU7OG1HEnAGwBnSQNDnAWpyNE3tNdA_gW
 - 仮想環境：Vagrant,VirtualBox
 
 ## 使用素材
->>>>>>> e5fb4b658cceca2e20b9b8c80c58d2a1af8185ad
 pixabay https://pixabay.com/ja/

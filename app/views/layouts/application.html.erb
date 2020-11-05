@@ -11,14 +11,17 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top navbar-default">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <span>Fashion Snap</span>
+          <span class="fashion-snap">Fashion Snap</span>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
+            <li class="">
+              <%= link_to "トップ", root_path %>
+            </li>
             <li class="">
               <%= link_to 'マイページ', user_path(current_user) %>
             </li>
@@ -36,10 +39,7 @@
             </li>
           <% else %>
             <li class="">
-              <%= link_to "新規登録", new_user_registration_path %>
-            </li>
-            <li class="">
-              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to "トップ", root_path %>
             </li>
             <li class="">
               <%= link_to "About", home_about_path %>
@@ -49,6 +49,12 @@
             </li>
             <li>
               <%= link_to "ユーザー一覧", users_path %>
+            </li>
+            <li class="">
+              <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+            <li class="">
+              <%= link_to "ログイン", new_user_session_path %>
             </li>
           <% end %>
         </ul>

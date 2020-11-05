@@ -2,10 +2,17 @@ class PostsController < ApplicationController
 	before_action :authenticate_user!, only: [:edit, :new, :show, :create]
   before_action :correct_user, only: [:update, :edit]
 
+  def top
+    @favorite_ranks = Post.create_favorite_ranks
+    @relationship_ranks = Post.create_relationship_ranks
+  end
+
+
   def index
   	@posts = Post.all
     @post = Post.new
     @user = current_user
+    @posts = @posts.where('title LIKE ? OR body LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
   end
 
   def edit
@@ -20,11 +27,6 @@ class PostsController < ApplicationController
 
   def new
   	@post = Post.new
-  end
-
-  def search
-    @posts = Post.all
-    @posts = @posts.where('title LIKE ? OR body LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
   end
 
   def create

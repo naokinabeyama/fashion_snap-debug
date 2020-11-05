@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users = @users.where('name LIKE ? OR introduction LIKE ?', "%#{params[:search]}%","%#{params[:search]}%") if params[:search].present?
+    @relationship = current_user.relationships.find_by(follow_id: @users.ids)
+    @set_relationship = current_user.relationships.new
   end
 
   def edit
@@ -20,11 +23,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-  end
-
-  def search
-    @users = User.all
-    @users = @users.where('name LIKE ? OR introduction LIKE ?', "%#{params[:search]}%","%#{params[:search]}%") if params[:search].present?
   end
 
   def followings
