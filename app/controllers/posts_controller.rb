@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	before_action :authenticate_user!, only: [:edit, :new, :show, :create]
+	before_action :authenticate_user!, only: [:edit, :new, :show, :create, :index]
   before_action :correct_user, only: [:update, :edit]
 
   def top
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   	if @post.save
   	  redirect_to post_path(@post)
     else
-      render :index
+      render :new
     end
   end
 
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
-      render "edit"
+      render :edit
     end
   end
 

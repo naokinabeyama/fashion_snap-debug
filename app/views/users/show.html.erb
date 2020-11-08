@@ -28,7 +28,9 @@
 
 	</div>
 	<div class="follow-btn">
-		<%= render 'relationships/follow_button', user: @user %>
+		<div id="relationships_buttons_<%= @user.id %>">
+			<%= render partial: 'relationships/follow_button', locals: {user: @user} %>
+		</div>
 	</div>
 
 	<% if @user == current_user %>
@@ -44,22 +46,28 @@
 
 <!-- ユーザー投稿一覧 -->
 <div class="user-post-all">
-	<h2 class="user-post-main">投稿</h2>
+	<h2 class="user-post-main">〜投稿一覧〜</h2>
 	<div class="user-post">
 		<% @posts.each do |post| %>
-			<%= link_to post_path(post) do %>
-			<div class="post-image">
-				<%= attachment_image_tag(post, :post_image, :fill, 250, 300) %>
-			</div>
-			<strong class="user-post-title"> タイトル：　<%= post.title %> </strong>
-			<% end %>
-			<div class="user-post-favorites">
-			<% unless @user == current_user %>
-				<div id="favorites_buttons_<%= post.id %>">
-					<%= render partial: 'favorites/favorite', locals: {post: post} %>
+			<div class="post-index-image">
+				<%= link_to post_path(post) do %>
+					<%= attachment_image_tag(post, :post_image, :fill, 250, 300, fallback: "no_image.jpg", class: "img-rounded") %>
+				<% end %>
+				<div class="post-index-title">
+					<%= link_to post_path(post) do %>
+						<strong class="user-post-title"> <%= post.title %> </strong>
+					<% end %>
+					<div class="post-time">
+						<%= l post.created_at, format: :long %>
+					</div>
+					<div class="user-index-favorite">
+					<div id="favorites_buttons_<%= post.id %>">
+						<%= render partial: 'favorites/favorite', locals: {post: post} %>
+					</div>
+					</div>
 				</div>
-			<% end %>
 			</div>
 		<% end %>
 	</div>
+</div>
 <!-- ユーザー投稿一覧 -->

@@ -7,11 +7,11 @@
 
 <div class="table">
 	<table>
+		<div class="user-index-all">
 		<% @users.each do |user| %>
-		<tbody>
-			<tr>
-				<div class="user-index-image">
-					<td>
+			<tbody>
+				<tr>
+					<td class="user-index-image">
 						<%= link_to user_path(user) do %>
 							<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", class: "img-circle") %>
 						<% end %>
@@ -29,14 +29,14 @@
 						<%  end %>
 					</td>
 				      <div class="user-index-follow">
-				      	<td>
-						    <%= render 'relationships/follow_button', user: user %>
+				      	<td id="relationships_buttons_<%= user.id %>">
+						    <%= render partial: 'relationships/follow_button', locals: {user: user} %>
 						</td>
 				      </div>
-				</div>
-			</tr>
-		</tbody>
+				</tr>
+			</tbody>
 		<% end %>
+		</div>
 	</table>
 </div>
 

@@ -15,7 +15,7 @@
 </div>
 <div class="post-show-main clearfix">
 	<div class="post-show-post-image">
-		<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg" %>
+		<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg", class: "img-rounded" %>
 </div>
 	<div class="post-show-post-text">
 		<div class="post-show-post-title">
@@ -26,15 +26,15 @@
 			<%= @post.body %>
 		</div>
 		<div class="post-show-favorites">
-			<% unless @user == current_user %>
+			<%= l @post.created_at, format: :long %>
 				<div id="favorites_buttons_<%= @post.id %>">
 					<%= render partial: 'favorites/favorite', locals: {post: @post} %>
 				</div>
-			<% end %>
 		</div>
 	<div class="post-show-comment">
+		コメント：
 		<%= @post.post_comments.count %>
-		：コメント
+		件
 	</div>
 </div>
 	<div class="post-show-edit">
@@ -45,39 +45,17 @@
 	</div>
 	</div>
 
-	<ol>
-		<% @post.post_comments.each do |post_comment| %>
-	    	<li class="comment">
-	      		<div class="comment-body bb">
-	        		<div class="comment-avatar">
-	          			<div class="avatar">
-	          				<%= link_to user_path(post_comment.user) do %>
-	            				<%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",  class: "img-circle" %>
-	            			<% end %>
-	          			</div>
-	        		</div>
-	        		<div class="comment-text">
-	          			<div class="comment-author clearfix">
-	            			<strong> <%= post_comment.user.name %> </strong>
-	          			</div>
-	          			<div class="comment-entry"><%= post_comment.comment %>
-	          				<% if post_comment.user == current_user %>
-	              				<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-sm" %>
-	            			</div>
-							<% end %>
-	       			</div>
-	      		</div>
-	    	</li>
-	 	<% end %>
-	</ol>
-		<% unless @user == current_user %>
-		<%= form_with(model: [@post, @post_comment], local: true) do |f| %>
+<div id="comment-<%= @post_comment.id %>">
+	<%= render partial: 'post_comments/comments', locals: {comment: @comment} %>
+</div>
+	<% unless @user == current_user %>
+		<%= form_with(model: [@post, @post_comment], remote: true) do |f| %>
 			<div class="row">
-		    <div class="col-sm-8">
-		      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-		      <%= f.submit "送信", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-		    </div>
-		    </div>
+				<div class="col-sm-8">
+					<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+					<%= f.submit "送信", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+				</div>
+			</div>
 		<% end %>
-		<% end %>
+	<% end %>
 </div>

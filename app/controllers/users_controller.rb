@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit]
+  before_action :authenticate_user!, only: [:edit, :index, :show]
   before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_path(@user)
     else
-      render :new
+      render :edit
     end
   end
 

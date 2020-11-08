@@ -31,13 +31,5 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
-  end
-
 
 end

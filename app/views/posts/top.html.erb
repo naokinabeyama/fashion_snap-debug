@@ -24,11 +24,11 @@
 					</div>
 					<div class="top-post-image">
 						<%= link_to post_path(post) do %>
-							<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg") %>
+							<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
 						<% end %>
 					</div>
 					<div class="">
-						<strong class="user-post-title"> タイトル：　<%= post.title %> </strong>
+						<strong class="user-post-title"> <%= post.title %> </strong>
 					</div>
 				</div>
 				<% lastfavorite = post.favorites.count %>
@@ -45,11 +45,11 @@
 					</div>
 					<div class="top-post-image">
 						<%= link_to post_path(post) do %>
-							<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg") %>
+							<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
 						<% end %>
 					</div>
 					<div class="">
-							<strong class="user-post-title"> タイトル：　<%= post.title %> </strong>
+							<strong class="user-post-title"> <%= post.title %> </strong>
 					</div>
 				</div>
 			<% end %>
@@ -61,7 +61,6 @@
 		</div>
 	</div>
 
-
 <h2>〜フォロワー数〜</h2>
 <% lastrelationship = 0 %>
 <% j = 1 %>
@@ -72,7 +71,7 @@
 		<% end %>
 		<% if user.followers.count != lastrelationship %>
 			<% j = i %>
-			<div class="">
+			<div class="top-follow-ranking">
 				<div class="clearfix">
 					<div class="top-ranking">
 						第<%= j %>位
@@ -86,11 +85,14 @@
 						<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg",  class: "img-circle") %>
 					<% end %>
 				</div>
+				<div class="top-user-name">
+					<strong> <%= user.name %> </strong>
+				</div>
 			<% lastrelationship = user.followers.count %>
 			</div>
 		<% else %>
 			<% lastrelationship = user.followers.count %>
-			<div class="">
+			<div class="top-follow-ranking">
 				<div class="clearfix">
 					<div class="top-ranking">
 						第<%= j %>位
@@ -103,6 +105,9 @@
 					<%= link_to user_path(user) do %>
 					<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg",  class: "img-circle") %>
 					<% end %>
+				</div>
+				<div class="top-user-name">
+					<strong> <%= user.name %> </strong>
 				</div>
 			</div>
 		<% end %>

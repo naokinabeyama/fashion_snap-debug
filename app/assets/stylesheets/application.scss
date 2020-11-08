@@ -138,7 +138,6 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 10px 0 10px 50px;
-	text-align: center;
 	width: 1100px
 }
 
@@ -166,13 +165,19 @@ body {
 	color: black;
 }
 
+.user-index-favorite {
+	text-align: right;
+	font-size: 15px;
+}
+
 .user-index-follow {
 	margin: 10px 0 40px 20px;
 }
 
-.user-index-image {
-	margin-top: 30px;
+.user-index-all {
+	margin-top: 80px;
 }
+
 
 .user-index-user-name {
 	font-size: 20px;
@@ -298,8 +303,16 @@ ol {
 	float: left;
 }
 
+.top-follow-ranking {
+	text-align: center;
+	padding-right: 120px;
+}
+
 .top-post-image-follower {
-	padding-right: 180px;
+}
+
+.top-user-name {
+	font-size: 15px;
 }
 
 .more {
@@ -309,4 +322,8 @@ ol {
 
 .more-text {
 	font-size: 15px;
+}
+
+.post-time {
+	text-align: right;
 }
