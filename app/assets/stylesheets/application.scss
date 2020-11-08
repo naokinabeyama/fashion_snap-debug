@@ -36,14 +36,14 @@
 }
 
 body {
-    background-image: image-url(marble.jpg);
+    background-image: image-url("marble.jpg");
     background-size: cover;
     margin: 60px auto;
     width: 1100px;
 }
 
 .about {
-	background-image: image-url(fashion-918446_1920.jpg);
+	background-image: image-url("fashion-918446_1920.jpg");
 	height: 500px;
 	background-size: cover;
 	background-position: center;
@@ -259,7 +259,7 @@ ol {
 }
 
 .top-image {
-	background-image: image-url(photography-336685_1920.jpg);
+	background-image: image-url("photography-336685_1920.jpg");
 	height: 500px;
 	background-size: cover;
 }
