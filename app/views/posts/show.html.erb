@@ -1,22 +1,24 @@
-<div class="post-show-user-profiel">
-<div class="post-show-user-image">
-	<%= link_to user_path(@user) do %>
-		<%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg",  class: "img-circle" %>
-	<% end %>
-</div>
-<div class="clearfix">
-		<div class="post-show-user-text">
+<div class="text">
+	<div class="post-show-user-profiel">
+		<div class="post-show-user-image">
 			<%= link_to user_path(@user) do %>
-				<strong class="post-show-user-name"> <%= @user.name %> </strong>
+				<%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg",  class: "img-circle" %>
 			<% end %>
-			<%= @user.gender %>
 		</div>
-</div>
-</div>
+		<div class="clearfix">
+				<div class="post-show-user-text">
+					<%= link_to user_path(@user) do %>
+						<strong class="post-show-user-name"> <%= @user.name %> </strong>
+					<% end %>
+					<%= @user.gender %>
+				</div>
+		</div>
+	</div>
+
 <div class="post-show-main clearfix">
 	<div class="post-show-post-image">
 		<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg", class: "img-rounded" %>
-</div>
+	</div>
 	<div class="post-show-post-text">
 		<div class="post-show-post-title">
 		<strong>タイトル：</strong>
@@ -36,14 +38,14 @@
 		<%= @post.post_comments.count %>
 		件
 	</div>
+	</div>
+		<div class="post-show-edit">
+			<% if @user == current_user %>
+				<%= link_to "編集", edit_post_path(@post) %>
+				<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+			<% end %>
+		</div>
 </div>
-	<div class="post-show-edit">
-		<% if @user == current_user %>
-			<%= link_to "編集", edit_post_path(@post) %>
-			<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
-		<% end %>
-	</div>
-	</div>
 
 <div id="comment-<%= @post_comment.id %>">
 	<%= render partial: 'post_comments/comments', locals: {comment: @comment} %>

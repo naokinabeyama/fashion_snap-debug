@@ -1,14 +1,17 @@
+<div class="text">
 <h1>ユーザー一覧</h1>
 
-<%= form_with url: users_path, method: :get, local: true do |f| %>
-  <%= f.text_field :search %>
-  <%= f.submit '検索', name: nil %>
-<% end %>
+<div class="search">
+	<%= form_with url: users_path, method: :get, local: true do |f| %>
+	  <%= f.text_field :search %>
+	  <%= button_tag '<i class="fas fa-search"></i>'.html_safe, :type => "submit" %>
+	<% end %>
+</div>
 
-<div class="table">
+<% @users.each do |user| %>
+<div class="user-index clearfix">
 	<table>
-		<div class="user-index-all">
-		<% @users.each do |user| %>
+		<div class="user-index-text">
 			<tbody>
 				<tr>
 					<td class="user-index-image">
@@ -24,19 +27,20 @@
 					</td>
 					<td class="user-index-user-followers">
 						<%= link_to user_followers_path(user) do %>
-							フォロワー
-							<%= user.followers.count %>
+							<div class="followers"> フォロワー
+								<%= user.followers.count %>
+							</div>
 						<%  end %>
 					</td>
-				      <div class="user-index-follow">
-				      	<td id="relationships_buttons_<%= user.id %>">
+				    <td class="user-index-follow">
+				      	<div id="relationships_buttons_<%= user.id %>">
 						    <%= render partial: 'relationships/follow_button', locals: {user: user} %>
-						</td>
-				      </div>
+						</div>
+				    </td>
 				</tr>
 			</tbody>
-		<% end %>
 		</div>
 	</table>
 </div>
-
+<% end %>
+</div>

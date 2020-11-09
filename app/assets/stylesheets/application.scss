@@ -31,15 +31,19 @@
 .container {
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 body {
     background-image: image-url("marble.jpg");
     background-size: cover;
-    margin: 60px auto;
-    width: 1100px;
+    margin: 55px auto;
+}
+
+.text {
+	width: 1200px;
+	margin: 80px auto;
 }
 
 .about {
@@ -79,7 +83,7 @@ body {
 }
 
 .fashion-snap {
-	font-size: 30px;
+	font-size: 35px;
 	font-family: "impact";
 }
 
@@ -87,17 +91,68 @@ body {
 	color: black;
 }
 
-.field {
-	margin: 20px;
+.edit {
+	margin: 100px auto;
+	width: 1000px;
+}
+
+.edit-text {
+	margin-top: 40px;
+	border: solid 1px #aaaaaa;
+	background-color: #f5f5f5;
+}
+
+.edit-table {
+	margin: 30px auto;
+}
+
+.edit-plofile {
+	font-size: 25px;
+	padding: 15px 30px;
+}
+
+.edit-image {
+	font-size: 17px;
+}
+
+.edit-name {
+	font-size: 17px;
+}
+
+.edit-gender {
 	font-size: 18px;
 }
 
-.actions {
-	font-size: 20px;
+.men {
+	float: left;
 }
 
-.edit {
-	margin-left: 100px;
+.women {
+	float: left;
+	padding-left: 20px;
+}
+
+.edit-btn {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.edit-introduction {
+	font-size: 15px;
+}
+
+.btn--edit-gray {
+	color: gray;
+  	background-color: #aaaaaa;
+  	border-bottom: 5px solid ;
+  	padding: 10px 25px;
+}
+
+.btn--edit-gray:hover {
+  	margin-top: 3px;
+  	color: black;
+  	background: #aaaaaa;
+  	border-bottom: 2px solid ;
 }
 
 .user-image {
@@ -115,11 +170,61 @@ body {
 }
 
 .follow-text {
-	padding-top: 30px;
+	padding-top: 60px;
+	color:  #aaaaaa;
+}
+
+.follow {
+	float: left;
+	padding-right: 20px;
+	color: #005FFF;
+	font-size: 16px;
+}
+
+.followers {
+	float: left;
+	color: #005FFF;
+	font-size: 16px;
+}
+
+.follower-btn {
+	font-size: 18px;
+	padding-left: 20px
+}
+
+.btn--red {
+	color: #ffffff;
+  	background-color: #DC143C;
+  	border-bottom: 5px solid #AA0000;
+}
+
+.btn--red:hover {
+  	margin-top: 3px;
+  	color: #ffffff;
+  	background: #cc0000;
+  	border-bottom: 2px solid #880000;
 }
 
 .follow-btn {
-	padding-left: 400px;
+	font-size: 18px;
+	padding: 5px 0 0 20px;
+}
+
+.btn--blue {
+	color: #ffffff;
+  	background-color: #005FFF;
+  	border-bottom: 5px solid #00008B;
+}
+
+.btn--blue:hover {
+  	margin-top: 3px;
+  	color: #ffffff;
+  	background: #0000CD;
+  	border-bottom: 2px solid #000077;
+}
+
+.plofile-btn {
+	padding: 15px 0 0 20px;
 }
 
 .user-post-profiel {
@@ -127,7 +232,36 @@ body {
 }
 
 .new-post {
-	text-align: center;
+	text-size: 20px;
+}
+
+.btn--gray {
+	color: #333333;
+  	background-color: #aaaaaa;
+  	border-bottom: 5px solid ;
+}
+
+.btn--gray:hover {
+  	margin-top: 3px;
+  	color: black;
+  	background: #aaaaaa;
+  	border-bottom: 2px solid ;
+}
+
+.btn--black {
+	color: #fff;
+	background-color: #191970;
+	border-bottom: 5px solid #000000;
+	font-size: 15px;
+	padding: 10px 25px;
+	margin-left: 25px;
+}
+
+.btn--black:hover {
+  	margin-top: 3px;
+  	color: #fff;
+  	background: #000033;
+  	border-bottom: 2px solid #000000;
 }
 
 .user-post-all {
@@ -147,8 +281,13 @@ body {
 
 }
 
+.post-title {
+	text-align: center;
+	padding: 10px 0
+}
+
 .user-post-title {
-	font-size: 18px;
+	font-size: 20px;
 	color: #aaaaaa;
 }
 
@@ -163,6 +302,7 @@ body {
 
 .favorites {
 	color: black;
+	font-size: 20px;
 }
 
 .user-index-favorite {
@@ -170,28 +310,28 @@ body {
 	font-size: 15px;
 }
 
-.user-index-follow {
-	margin: 10px 0 40px 20px;
+.user-index {
+	padding: 10px 25px;
+    margin: 2em 0;
+    border: double 5px #aaaaaa;
+    background-color: #f5f5f5;
 }
-
-.user-index-all {
-	margin-top: 80px;
-}
-
 
 .user-index-user-name {
-	font-size: 20px;
-	padding-left: 20px;
+	font-size: 25px;
+	padding-left: 40px;
 }
 
 .user-index-user-gender {
-	font-size: 15px;
-	padding: 0 20px;
+	font-size: 18px;
+	padding: 0 40px;
 }
 
 .user-index-user-followers {
 	padding-right: 20px;
 }
+
+
 
 .post-show-user-profiel {
 	padding: 25px 0 0 30px;
@@ -254,18 +394,37 @@ ol {
 	float: right;
 }
 
+.solid {
+	border: solid 1px #c0c0c0;
+	border-radius: 8px;
+}
+
 .post-index-image {
-	padding: 30px 60px 30px 40px;
+	padding: 30px 50px 20px 40px;
+}
+
+.post-user-image {
+	float: left;
+}
+
+.post-index-name {
+	float: left;
+	padding: 15px 0 0 10px;
+}
+
+.user-index-favorite {
+	padding-top: 10px;
+	padding-right: 5px;
+}
+
+.post-index-title {
+	background-color: #ffffff;
 }
 
 .top-image {
 	background-image: image-url("photography-336685_1920.jpg");
 	height: 500px;
 	background-size: cover;
-}
-
-.top-post-image {
-	padding-right: 80px;
 }
 
 .top-title {
@@ -277,11 +436,25 @@ ol {
 }
 
 .top-ranking {
+	padding: 30px 0;
+}
+
+.ranking {
+	color: #FFD700;
+	font-size: 50px;
+}
+
+.top-favorite {
+	padding: 10px 0 30px 50px;
+	color: #FF82B2;
+}
+
+.top-ranking-count {
 	font-size: 27px;
 	float: left;
 }
 
-.top-favorite {
+.top-favorite-count {
 	font-size: 20px;
 	padding: 5px 0 15px 50px;
 	float: left;
@@ -291,10 +464,12 @@ ol {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 10px 0 10px 50px;
+	width: 1100px;
 }
 
 .top-main {
-	margin-top: 50px;
+	width: 1200px;
+	margin: 50px auto;
 }
 
 .top-relationship {
@@ -306,9 +481,6 @@ ol {
 .top-follow-ranking {
 	text-align: center;
 	padding-right: 120px;
-}
-
-.top-post-image-follower {
 }
 
 .top-user-name {
@@ -326,4 +498,59 @@ ol {
 
 .post-time {
 	text-align: right;
+	border-top: solid 1px #c0c0c0;
+}
+
+.post-solid {
+	border-top: solid 1px #c0c0c0;
+}
+
+.search {
+  position: relative;
+  border: 1px solid #999;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 260px;
+  overflow: hidden;
+}
+
+.search input[type="text"]{
+  border: none;
+  height: 2.0em;
+}
+
+.search input[type="text"]:focus {
+  outline: 0;
+}
+
+.search [type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  color: #aaaaaa;
+  position: absolute;
+  width: 2.5em;
+  height: 2.5em;
+  right: 0;
+  top: -10px;
+  outline : none;
+}
+
+.plofile {
+	padding: 20px 0 0 30px;
+    margin: 2em 0;
+    border: double 5px #aaaaaa;
+    background-color: #f5f5f5;
+}
+
+.plofile-text {
+	float: left;
+	padding-left: 50px;
+}
+
+.top-post-title {
+	background-color: #ffffff;
 }
