@@ -41,14 +41,20 @@ body {
     margin: 55px auto;
 }
 
+footer {
+	text-align: center;
+	color: #aaaaaa;
+	margin: 100px 0 50px 0;
+}
+
 .text {
 	width: 1200px;
 	margin: 80px auto;
 }
 
 .about {
-	background-image: image-url("fashion-918446_1920.jpg");
-	height: 500px;
+	background-image: image-url("adult-1868050_1920.jpg");
+	height: 550px;
 	background-size: cover;
 	background-position: center;
 }
@@ -64,8 +70,15 @@ body {
 	font-family: "impact";
 }
 
+.top-about {
+	border-bottom: solid;
+	width: 300px;
+	margin: 0 auto;
+}
+
 .about-top-comment {
 	font-size: 40px;
+	padding-top: 20px;
 }
 
 .about-text {
@@ -142,7 +155,7 @@ body {
 }
 
 .btn--edit-gray {
-	color: gray;
+	color: #333333;
   	background-color: #aaaaaa;
   	border-bottom: 5px solid ;
   	padding: 10px 25px;
@@ -224,15 +237,16 @@ body {
 }
 
 .plofile-btn {
-	padding: 15px 0 0 20px;
+	padding-top: 10px;
 }
 
 .user-post-profiel {
-	padding: 10px;
+	padding-top: 10px;
 }
 
 .new-post {
 	text-size: 20px;
+	padding: 0 0 5px 10px;
 }
 
 .btn--gray {
@@ -360,19 +374,33 @@ body {
 	float: left;
 }
 
-.post-show-post-text {
+.post-show-post {
 	float: left;
 	margin-left: 90px;
+}
+
+.post-show-post-text {
+	border: solid 2px #c0c0c0;
+	width: 500px;
+	background-color: #FFFAFA;
 }
 
 .post-show-post-title {
 	font-size: 30px;
 	color: #aaaaaa;
+	text-align: center;
+	border-bottom: solid 1px #c0c0c0;
 }
 
 .post-show-post-body {
-	padding: 60px 0;
-	font-size: 20px;
+	padding: 40px 0 200px 20px;
+	font-size: 16px;
+}
+
+.post-day {
+	border-bottom: solid 1px #c0c0c0;
+	text-align: right;
+	color: #aaaaaa;
 }
 
 .post-show-favorites {
@@ -385,13 +413,45 @@ body {
 	font-size: 15px;
 }
 
-ol {
-	margin: 30px 0 20px 30px;
+.comment-title {
+	padding-left: 20px;
+	font-size: 16px;
+}
+
+.avatar {
+	float: left;
+}
+
+
+.comment-all {
+	margin: 30px 0 20px 10px;
+	border-top: solid #aaaaaa;
+	width: 800px;
+}
+
+.comment-text {
+	border-bottom: solid #aaaaaa;
+	padding-top: 10px;
+	width: 800px;
+}
+
+.comment {
+	float: left;
+	padding: 20px 0 0 20px;
+}
+
+
+.delete-btn {
+	text-align: right;
+	padding: 30px 10px 0 0;
+}
+
+.day {
+	color: #aaaaaa;
 }
 
 .post-show-edit {
-	padding-left: 20px;
-	float: right;
+	text-align: right;
 }
 
 .solid {
@@ -412,9 +472,10 @@ ol {
 	padding: 15px 0 0 10px;
 }
 
-.user-index-favorite {
+.post-index-favorite {
 	padding-top: 10px;
 	padding-right: 5px;
+	text-align: right;
 }
 
 .post-index-title {
@@ -440,13 +501,18 @@ ol {
 }
 
 .ranking {
-	color: #FFD700;
+	color: #8B4513;
 	font-size: 50px;
 }
 
 .top-favorite {
-	padding: 10px 0 30px 50px;
+	padding: 10px 0 15px 50px;
 	color: #FF82B2;
+}
+
+.top-follow {
+	padding-bottom: 30px;
+	color: #005FFF;
 }
 
 .top-ranking-count {
@@ -463,8 +529,9 @@ ol {
 .top-user-post {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 10px 0 10px 50px;
+	padding: 10px 0;
 	width: 1100px;
+	margin: 0 auto;
 }
 
 .top-main {
@@ -474,26 +541,36 @@ ol {
 
 .top-relationship {
 	font-size: 20px;
-	padding: 5px 0 15px 10px;
+	padding: 5px 0 15px 20px;
 	float: left;
 }
 
 .top-follow-ranking {
 	text-align: center;
-	padding-right: 120px;
+	padding: 30px 60px 20px 50px;
 }
 
 .top-user-name {
-	font-size: 15px;
+	font-size: 18px;
+	padding-top: 10px;
+}
+
+.top-user {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px 0;
+	margin: 0 auto;
+	width: 1100px;
 }
 
 .more {
-	text-align: right;
+	color: black;
 	margin: 40px 0;
 }
 
 .more-text {
 	font-size: 15px;
+	text-align: right;
 }
 
 .post-time {
@@ -553,4 +630,14 @@ ol {
 
 .top-post-title {
 	background-color: #ffffff;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.top-post-image-follower {
+	padding-top: 10px;
+}
+
+.user-name {
+	color: black;
 }

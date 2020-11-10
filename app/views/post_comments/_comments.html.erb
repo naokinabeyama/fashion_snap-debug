@@ -1,28 +1,33 @@
-<ol>
+<div class="comment-all">
 	<% @post.post_comments.each do |post_comment| %>
-	    	<li class="comment">
+	    	<div class="comment-text">
 	      		<div class="comment-body bb">
-	        		<div class="comment-avatar">
+	        		<div class="comment-avatar clearfix">
 	          			<div class="avatar">
 	          				<%= link_to user_path(post_comment.user) do %>
 	            				<%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg",  class: "img-circle" %>
 	            			<% end %>
 	          			</div>
+		          			<div class="comment">
+		          				<%= post_comment.comment %>
+		          			</div>
+			          			<% if post_comment.user == current_user %>
+			          			<div class="comment-delete">
+			          				<div class="delete-btn">
+			              			<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: "text-muted" %>
+			              			</div>
+			              		</div>
+								<% end %>
 	        		</div>
-	        		<div class="comment-text">
+	        		<div class="comment-area">
 	          			<div class="comment-author clearfix">
 	            			<strong> <%= post_comment.user.name %> </strong>
 	          			</div>
-	          			<div class="comment-entry"><%= post_comment.comment %>
-	          				<% if post_comment.user == current_user %>
-	              				<%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" %>
-							<% end %>
-						<div class="">
+						<div class="day">
 							<%= l @post.created_at, format: :long %>
-						</div>
 						</div>
 	       			</div>
 	      		</div>
-	    	</li>
+	    	</div>
 	 	<% end %>
-	</ol>
+</div>

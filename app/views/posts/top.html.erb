@@ -4,129 +4,144 @@
 
 <div class="top-main">
 	<div class="top-main-text">
-	<div class="top-ranking">
-		<h1 class="ranking"> <strong>☆RANKING☆</strong> </h1>
-	</div>
-		<div class="top-favorite">
-			<h2>〜いいね数〜</h2>
+		<div class="top-ranking">
+			<h1 class="ranking"> <strong>☆RANKING☆</strong> </h1>
 		</div>
-			<% lastfavorite = 0 %>
-			<% j = 1 %>
-			<div class="top-user-post">
-				<% @favorite_ranks.each.with_index(1) do |post, i| %>
-					<% if i == 1 %>
-					<% lastfavorite = post.favorites.count %>
-					<% end %>
-						<% if post.favorites.count != lastfavorite %>
-							<% j = i %>
-							<div class="post-index-image">
-								<div class="top-favorite-ranking-text clearfix">
-									<div class="top-ranking-count">
-										第<%= j %>位
-									</div>
-									<div class="top-favorite-count">
-										<%= post.favorites.count %> いいね
-									</div>
-								</div>
-								<div class="solid">
-								<div class="top-post-image">
-									<%= link_to post_path(post) do %>
-										<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
-									<% end %>
-								</div>
-								<div class="top-post-title">
-									<strong class="user-post-title"> <%= post.title %> </strong>
-								</div>
-							</div>
-							</div>
-							<% lastfavorite = post.favorites.count %>
-						<% else %>
-							<% lastfavorite = post.favorites.count %>
-							<div class="post-index-image">
-								<div class="top-favorite-ranking-text clearfix">
-									<div class="top-ranking-count">
-										第<%= j %>位
-									</div>
-									<div class="top-favorite-count">
-										<%= post.favorites.count %> いいね
-									</div>
-								</div>
-								<div class="solid">
-								<div class="top-post-image">
-									<%= link_to post_path(post) do %>
-										<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
-									<% end %>
-								</div>
-								<div class="top-post-title">
-										<strong class="user-post-title"> <%= post.title %> </strong>
-								</div>
-							</div>
-							</div>
+		<!-- いいねランキング -->
+			<div class="top-favorite">
+				<h2>〜いいね数〜</h2>
+			</div>
+				<% lastfavorite = 0 %>
+				<% j = 1 %>
+				<div class="top-user-post">
+					<% @favorite_ranks.each.with_index(1) do |post, i| %>
+						<% if i == 1 %>
+						<% lastfavorite = post.favorites.count %>
 						<% end %>
-					<% end %>
-			</div>
-				<div class="">
-					<div class="">
-						<%= link_to "投稿をもっと見る", posts_path %>
+							<% if post.favorites.count != lastfavorite %>
+								<% j = i %>
+								<div class="post-index-image">
+									<div class="top-favorite-ranking-text clearfix">
+										<div class="top-ranking-count">
+											第<%= j %>位
+										</div>
+										<div class="top-favorite-count">
+											<%= post.favorites.count %> いいね
+										</div>
+									</div>
+									<div class="solid">
+									<div class="top-post-image">
+										<%= link_to post_path(post) do %>
+											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
+										<% end %>
+									</div>
+									<div class="top-post-title">
+										<%= link_to post_path(post) do %>
+											<strong class="user-post-title"> <%= post.title %> </strong>
+										<% end %>
+									</div>
+								</div>
+								</div>
+								<% lastfavorite = post.favorites.count %>
+							<% else %>
+								<% lastfavorite = post.favorites.count %>
+								<div class="post-index-image">
+									<div class="top-favorite-ranking-text clearfix">
+										<div class="top-ranking-count">
+											第<%= j %>位
+										</div>
+										<div class="top-favorite-count">
+											<%= post.favorites.count %> いいね
+										</div>
+									</div>
+									<div class="solid">
+									<div class="top-post-image">
+										<%= link_to post_path(post) do %>
+											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
+										<% end %>
+									</div>
+									<div class="top-post-title">
+										<%= link_to post_path(post) do %>
+											<strong class="user-post-title"> <%= post.title %> </strong>
+										<% end %>
+									</div>
+								</div>
+								</div>
+							<% end %>
+						<% end %>
+				</div>
+				<div class="more">
+					<div class="more-text">
+						<%= link_to "＜投稿をもっと見る＞", posts_path, class: "text-muted" %>
 					</div>
 				</div>
 	</div>
-
-<h2>〜フォロワー数〜</h2>
-<% lastrelationship = 0 %>
-<% j = 1 %>
-<div class="top-user-post">
-	<% @relationship_ranks.each.with_index(1) do |user, i| %>
-		<% if i == 1 %>
-			<% relationship = user.followers.count %>
-		<% end %>
-		<% if user.followers.count != lastrelationship %>
-			<% j = i %>
-			<div class="top-follow-ranking">
-				<div class="clearfix">
-					<div class="top-ranking-count">
-						第<%= j %>位
+	<!-- いいねランキング -->
+	<!-- フォロワーランキング -->
+	<div class="top-main-text">
+		<div class="top-follow">
+			<h2>〜フォロワー数〜</h2>
+		</div>
+		<% lastrelationship = 0 %>
+		<% j = 1 %>
+		<div class="top-user">
+			<% @relationship_ranks.each.with_index(1) do |user, i| %>
+				<% if i == 1 %>
+					<% relationship = user.followers.count %>
+				<% end %>
+				<% if user.followers.count != lastrelationship %>
+					<% j = i %>
+					<div class="top-follow-ranking">
+						<div class="clearfix">
+							<div class="top-ranking-count">
+								第<%= j %>位
+							</div>
+							<div class="top-relationship">
+								フォロワー <%= user.followers.count %> 人
+							</div>
+						</div>
+						<div class="top-post-image-follower">
+							<%= link_to user_path(user) do %>
+								<%= attachment_image_tag(user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",  class: "img-circle") %>
+							<% end %>
+						</div>
+						<div class="top-user-name">
+							<%= link_to user_path(user) do %>
+								<strong class="user-name"> <%= user.name %> </strong>
+							<% end %>
+						</div>
+					<% lastrelationship = user.followers.count %>
 					</div>
-					<div class="top-relationship">
-						フォロワー <%= user.followers.count %> 人
+				<% else %>
+					<% lastrelationship = user.followers.count %>
+					<div class="top-follow-ranking">
+						<div class="clearfix">
+							<div class="top-ranking-count">
+								第<%= j %>位
+							</div>
+							<div class="top-relationship">
+								フォロワー <%= user.followers.count %> 人
+							</div>
+						</div>
+						<div class="">
+							<%= link_to user_path(user) do %>
+							<%= attachment_image_tag(user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",  class: "img-circle") %>
+							<% end %>
+						</div>
+						<div class="top-user-name">
+							<%= link_to user_path(user) do %>
+								<strong class="user-name"> <%= user.name %> </strong>
+							<% end %>
+						</div>
 					</div>
-				</div>
-				<div class="top-post-image-follower">
-					<%= link_to user_path(user) do %>
-						<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg",  class: "img-circle") %>
-					<% end %>
-				</div>
-				<div class="top-user-name">
-					<strong> <%= user.name %> </strong>
-				</div>
-			<% lastrelationship = user.followers.count %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="more">
+			<div class="more-text">
+				<%= link_to "＜ユーザーをもっと見る＞", users_path, class: "text-muted" %>
 			</div>
-		<% else %>
-			<% lastrelationship = user.followers.count %>
-			<div class="top-follow-ranking">
-				<div class="clearfix">
-					<div class="top-ranking-count">
-						第<%= j %>位
-					</div>
-					<div class="top-relationship">
-						フォロワー <%= user.followers.count %> 人
-					</div>
-				</div>
-				<div class="">
-					<%= link_to user_path(user) do %>
-					<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg",  class: "img-circle") %>
-					<% end %>
-				</div>
-				<div class="top-user-name">
-					<strong> <%= user.name %> </strong>
-				</div>
-			</div>
-		<% end %>
-	<% end %>
-</div>
-	<div class="">
-		<div class="">
-			<%= link_to "ユーザーをもっと見る", users_path %>
 		</div>
 	</div>
+	<!-- フォロワーランキング -->
 </div>

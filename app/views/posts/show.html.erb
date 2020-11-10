@@ -1,63 +1,87 @@
 <div class="text">
-	<div class="post-show-user-profiel">
-		<div class="post-show-user-image">
-			<%= link_to user_path(@user) do %>
-				<%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg",  class: "img-circle" %>
-			<% end %>
-		</div>
-		<div class="clearfix">
-				<div class="post-show-user-text">
-					<%= link_to user_path(@user) do %>
-						<strong class="post-show-user-name"> <%= @user.name %> </strong>
-					<% end %>
-					<%= @user.gender %>
-				</div>
-		</div>
+	<div class="user-index clearfix">
+		<table>
+			<div class="user-index-text">
+				<tbody>
+					<tr>
+						<td class="user-index-image">
+							<%= link_to user_path(@user) do %>
+								<%= attachment_image_tag(@user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", class: "img-circle") %>
+							<% end %>
+						</td>
+						<td class="user-index-user-name">
+							<strong> <%= @user.name %> </strong>
+						</td>
+						<td class="user-index-user-gender">
+							<%= @user.gender %>
+						</td>
+						<td class="user-index-user-followers">
+							<%= link_to user_followers_path(@user) do %>
+								<div class="followers"> フォロワー
+									<%= @user.followers.count %>
+								</div>
+							<%  end %>
+						</td>
+					    <td class="user-index-follow">
+					      	<div id="relationships_buttons_<%= @user.id %>">
+							    <%= render partial: 'relationships/follow_button', locals: {user: @user} %>
+							</div>
+					    </td>
+					</tr>
+				</tbody>
+			</div>
+		</table>
 	</div>
 
-<div class="post-show-main clearfix">
-	<div class="post-show-post-image">
-		<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg", class: "img-rounded" %>
-	</div>
-	<div class="post-show-post-text">
-		<div class="post-show-post-title">
-		<strong>タイトル：</strong>
-			<%= @post.title %>
+	<div class="post-show-main clearfix">
+		<div class="post-show-post-image">
+			<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg", class: "img-rounded" %>
 		</div>
-		<div class="post-show-post-body">
-			<%= @post.body %>
-		</div>
-		<div class="post-show-favorites">
-			<%= l @post.created_at, format: :long %>
-				<div id="favorites_buttons_<%= @post.id %>">
-					<%= render partial: 'favorites/favorite', locals: {post: @post} %>
-				</div>
-		</div>
-	<div class="post-show-comment">
-		コメント：
-		<%= @post.post_comments.count %>
-		件
-	</div>
-	</div>
-		<div class="post-show-edit">
-			<% if @user == current_user %>
-				<%= link_to "編集", edit_post_path(@post) %>
-				<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
-			<% end %>
-		</div>
-</div>
-
-<div id="comment-<%= @post_comment.id %>">
-	<%= render partial: 'post_comments/comments', locals: {comment: @comment} %>
-</div>
-	<% unless @user == current_user %>
-		<%= form_with(model: [@post, @post_comment], remote: true) do |f| %>
-			<div class="row">
-				<div class="col-sm-8">
-					<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-					<%= f.submit "送信", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+			<div class="post-show-post">
+				<div class="post-show-post-text">
+					<div class="post-show-post-title">
+						<strong>〜 <%= @post.title %> 〜</strong>
+					</div>
+					<div class="post-show-post-body">
+						<%= @post.body %>
+					</div>
+					<div class="post-day">
+						<%= l @post.created_at, format: :long %>
+					</div>
+					<div class="post-show-favorites">
+						<div id="favorites_buttons_<%= @post.id %>">
+									<%= render partial: 'favorites/favorite', locals: {post: @post} %>
+						</div>
+					</div>
+					<div class="post-show-comment">
+						コメント：
+						<%= @post.post_comments.count %>
+						件
+					</div>
+					<div class="post-show-edit">
+						<% if @user == current_user %>
+							<%= link_to "編集", edit_post_path(@post), class: "text-muted" %>
+							<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "text-muted" %>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		<% end %>
-	<% end %>
+	</div>
+
+	<div class="comment-title">
+		<strong> コメント </strong>
+	</div>
+		<div id="comment-<%= @post_comment.id %>">
+			<%= render partial: 'post_comments/comments', locals: {comment: @comment} %>
+		</div>
+			<% unless @user == current_user %>
+				<%= form_with(model: [@post, @post_comment], remote: true) do |f| %>
+					<div class="row">
+						<div class="col-sm-8">
+							<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+							<%= f.submit "送信", class: "btn btn--black btn--cubic pull-right" %>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
 </div>

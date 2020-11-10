@@ -23,6 +23,8 @@ class PostsController < ApplicationController
   	@post = Post.find(params[:id])
   	@user = @post.user
     @post_comment = PostComment.new
+    @relationship = current_user.relationships.find_by(follow_id: @user.id)
+    @set_relationship = current_user.relationships.new
   end
 
   def new
