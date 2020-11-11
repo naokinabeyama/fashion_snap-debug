@@ -2,71 +2,72 @@
 <h1>プロフィール編集</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
-
-<% if @user.errors.any? %>
-	<div id="error_explanation" class="alert alert-danger">
-		<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
-			<ul>
-			<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-			</ul>
-	</div>
-<% end %>
-<div class="edit-text">
-	<table class="edit-table">
-		<tbody>
-		<tr>
-			<div class="field">
-				<td class="edit-plofile">
-					<%= f.label :プロフィール画像 %>
-				</td>
-				<td class="edit-image">
-					<%= f.attachment_field :profile_image %>
-				</td>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<td class="edit-plofile">
-					<%= f.label :名前又はニックネーム %>
-				</td>
-				<td class="edit-name">
-					<%= f.text_field :name %>
-				</td>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<td class="edit-plofile">
-					<%= f.label :性別 %>
-				</td>
-				<td class="edit-gender">
-					<div class="men">
-						<%= f.radio_button :gender, "MEN" %>MEN
-					</div>
-					<div class="women">
-						<%= f.radio_button :gender, "WOMEN" %>WOMEN
-					</div>
-				</td>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<td class="edit-plofile">
-					<%= f.label :自己紹介 %>
-				</td>
-				<td class="edit-introduction">
-					<%= f.text_area :introduction, :size=>"40" %>
-				</td>
-			</div>
-		</tr>
-		</tbody>
-	</table>
-		<div class="edit-btn">
-			<%= f.submit "変更する", class: "btn btn--edit-gray btn--cubic" %>
+	<!-- エラー文 -->
+	<% if @user.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
+				<ul>
+				<% @user.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+				</ul>
 		</div>
-</div>
+	<% end %>
+	<!-- エラー文 -->
+	<div class="edit-text">
+		<table class="edit-table">
+			<tbody>
+				<tr>
+					<div class="field">
+						<td class="edit-plofile">
+							<%= f.label :プロフィール画像 %>
+						</td>
+						<td class="edit-image">
+							<%= f.attachment_field :profile_image %>
+						</td>
+					</div>
+				</tr>
+				<tr>
+					<div class="field">
+						<td class="edit-plofile">
+							<%= f.label :名前又はニックネーム %>
+						</td>
+						<td class="edit-name">
+							<%= f.text_field :name %>
+						</td>
+					</div>
+				</tr>
+				<tr>
+					<div class="field">
+						<td class="edit-plofile">
+							<%= f.label :性別 %>
+						</td>
+						<td class="edit-gender">
+							<div class="men">
+								<%= f.radio_button :gender, "MEN" %>MEN
+							</div>
+							<div class="women">
+								<%= f.radio_button :gender, "WOMEN" %>WOMEN
+							</div>
+						</td>
+					</div>
+				</tr>
+				<tr>
+					<div class="field">
+						<td class="edit-plofile">
+							<%= f.label :自己紹介 %>
+						</td>
+						<td class="edit-introduction">
+							<%= f.text_area :introduction, :size=>"40" %>
+						</td>
+					</div>
+				</tr>
+			</tbody>
+		</table>
+			<div class="edit-btn">
+				<%= f.submit "変更する", class: "btn btn--edit-gray btn--cubic" %>
+			</div>
+	</div>
 <% end %>
 </div>
 

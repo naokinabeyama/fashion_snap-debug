@@ -1,35 +1,38 @@
+<div class="text">
 <h2>フォロー一覧</h2>
-
-<div class="table">
-	<table>
-		<% @users.each do |user| %>
-		<tbody>
-			<tr>
-				<div class="user-index-image">
-					<td>
-						<%= link_to user_path(user) do %>
-							<%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",  class: "img-circle") %>
-						<% end %>
-					</td>
-					<td class="user-index-user-name">
-						<strong> <%= user.name %> </strong>
-					</td>
-					<td class="user-index-user-gender">
-						<%= user.gender %>
-					</td>
-					<td class="user-index-user-followers">
-						<%= link_to user_followings_path(user) do %>
-							フォロー： <%= user.followings.count %>
-						<% end %>
-					</td>
-					<td class="user-index-user-followers">
-						<%= link_to user_followers_path(user) do %>
-							フォロワー： <%= user.followers.count %>
-						<%  end %>
-					</td>
+	<% @users.each do |user| %>
+		<div class="user-index clearfix">
+			<table>
+				<div class="user-index-text">
+					<tbody>
+						<tr>
+							<td class="user-index-image">
+								<%= link_to user_path(user) do %>
+									<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", class: "img-circle") %>
+								<% end %>
+							</td>
+							<td class="user-index-user-name">
+								<strong> <%= user.name %> </strong>
+							</td>
+							<td class="user-index-user-gender">
+								<%= user.gender %>
+							</td>
+							<td class="user-index-user-followers">
+								<%= link_to user_followings_path(user) do %>
+									<div class="follow">フォロー
+										<%= user.followings.count %>
+									</div>
+								<% end %>
+								<%= link_to user_followers_path(user) do %>
+									<div class="followers"> フォロワー
+										<%= user.followers.count %>
+									</div>
+								<%  end %>
+							</td>
+						</tr>
+					</tbody>
 				</div>
-			</tr>
-		</tbody>
-		<% end %>
-	</table>
+			</table>
+		</div>
+	<% end %>
 </div>

@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
 
   def index
-  	@posts = Post.all
+  	@posts = Post.all.order(created_at: :desc)
     @post = Post.new
     @user = current_user
     @posts = @posts.where('title LIKE ? OR body LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?

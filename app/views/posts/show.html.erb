@@ -1,4 +1,5 @@
 <div class="text">
+	<!-- ユーザー -->
 	<div class="user-index clearfix">
 		<table>
 			<div class="user-index-text">
@@ -32,7 +33,8 @@
 			</div>
 		</table>
 	</div>
-
+	<!-- ユーザー -->
+	<!-- 投稿詳細 -->
 	<div class="post-show-main clearfix">
 		<div class="post-show-post-image">
 			<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg", class: "img-rounded" %>
@@ -67,7 +69,8 @@
 				</div>
 			</div>
 	</div>
-
+	<!-- 投稿詳細 -->
+	<!-- コメント -->
 	<div class="comment-title">
 		<strong> コメント </strong>
 	</div>
@@ -84,4 +87,5 @@
 					</div>
 				<% end %>
 			<% end %>
+	<!-- コメント -->
 </div>

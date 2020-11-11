@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update, :edit]
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :desc)
     @users = @users.where('name LIKE ? OR introduction LIKE ?', "%#{params[:search]}%","%#{params[:search]}%") if params[:search].present?
     @relationship = current_user.relationships.find_by(follow_id: @users.ids)
     @set_relationship = current_user.relationships.new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
     @post = Post.new
     @relationship = current_user.relationships.find_by(follow_id: @user.id)
     @set_relationship = current_user.relationships.new
@@ -27,12 +27,16 @@ class UsersController < ApplicationController
 
   def followings
     @user = User.find(params[:follow_id])
-    @users = @user.followings.all
+    @users = @user.followings.all.order(created_at: :desc)
+    @relationship = current_user.relationships.find_by(follow_id: @user.id)
+    @set_relationship = current_user.relationships.new
   end
 
   def followers
     @user = User.find(params[:follow_id])
-    @users = @user.followers.all
+    @users = @user.followers.all.order(created_at: :desc)
+    @relationship = current_user.relationships.find_by(follow_id: @user.id)
+    @set_relationship = current_user.relationships.new
   end
 
   def create

@@ -2,59 +2,60 @@
 <h2>編集画面</h2>
 
 <%= form_with(model: @post, local: true) do |f| %>
-<% if @post.errors.any? %>
-	<div id="error_explanation" class="alert alert-danger">
-		<h3><%= I18n.t("errors.messages.not_saved",
-                 count: @post.errors.count,
-                 resource: @post.class.model_name.human.downcase) %>
-       </h3>
-			<ul>
-			<% @post.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-			</ul>
-	</div>
-<% end %>
-
-<div class="edit-text">
-	<table class="edit-table">
-		<tbody>
-		<tr>
-			<div class="field">
-				<td class="edit-plofile">
-					<%= f.label :写真 %>
-				</td>
-				<td class="edit-image">
-					<%= f.attachment_field :post_image %>
-				</td>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<td class="edit-plofile">
-					<%= f.label :タイトル %>
-				</td>
-				<td class="edit-name">
-					<%= f.text_field :title %>
-				</td>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<td class="edit-plofile">
-					<%= f.label :説明文 %>
-				</td>
-				<td class="edit-introduction">
-					<%= f.text_area :body, :size=>"40" %>
-				</td>
-			</div>
-		</tr>
-		</tbody>
-	</table>
-		<div class="edit-btn">
-			<%= f.submit "投稿", class: "btn btn--black btn--cubic" %>
+	<!-- エラー文 -->
+	<% if @post.errors.any? %>
+		<div id="error_explanation" class="alert alert-danger">
+			<h3><%= I18n.t("errors.messages.not_saved",
+	                 count: @post.errors.count,
+	                 resource: @post.class.model_name.human.downcase) %>
+	       </h3>
+				<ul>
+				<% @post.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+				</ul>
 		</div>
-</div>
+	<% end %>
+	<!-- エラー文 -->
+	<div class="edit-text">
+		<table class="edit-table">
+			<tbody>
+			<tr>
+				<div class="field">
+					<td class="edit-plofile">
+						<%= f.label :写真 %>
+					</td>
+					<td class="edit-image">
+						<%= f.attachment_field :post_image %>
+					</td>
+				</div>
+			</tr>
+			<tr>
+				<div class="field">
+					<td class="edit-plofile">
+						<%= f.label :タイトル %>
+					</td>
+					<td class="edit-name">
+						<%= f.text_field :title %>
+					</td>
+				</div>
+			</tr>
+			<tr>
+				<div class="field">
+					<td class="edit-plofile">
+						<%= f.label :説明文 %>
+					</td>
+					<td class="edit-introduction">
+						<%= f.text_area :body, :size=>"40" %>
+					</td>
+				</div>
+			</tr>
+			</tbody>
+		</table>
+			<div class="edit-btn">
+				<%= f.submit "投稿", class: "btn btn--black btn--cubic" %>
+			</div>
+	</div>
 <% end %>
 </div>
 

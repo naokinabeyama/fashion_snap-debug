@@ -11,13 +11,13 @@ class Post < ApplicationRecord
 
 	def favorited_by?(user)
     	favorites.where(user_id: user.id).exists?
-  	end
+  end
 
-  	def self.create_favorite_ranks
-  		Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
-  	end
+  def self.create_favorite_ranks
+  	Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+  end
 
-  	def self.create_relationship_ranks
-  		User.find(Relationship.group(:follow_id).order('count(follow_id) desc').limit(3).pluck(:follow_id))
-  	end
+  def self.create_relationship_ranks
+  	User.find(Relationship.group(:follow_id).order('count(follow_id) desc').limit(3).pluck(:follow_id))
+  end
 end
