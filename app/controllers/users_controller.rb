@@ -21,10 +21,6 @@ class UsersController < ApplicationController
     @set_relationship = current_user.relationships.new
   end
 
-  def new
-    @user = User.new
-  end
-
   def followings
     @user = User.find(params[:follow_id])
     @users = @user.followings.all.order(created_at: :desc)
