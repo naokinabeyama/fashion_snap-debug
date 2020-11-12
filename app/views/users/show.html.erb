@@ -3,7 +3,7 @@
 	<div class="my-page ">
 		<div class="plofile clearfix">
 			<div class="user-image">
-				<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg", class: "img-circle" %>
+				<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, class: "img-circle" %>
 			</div>
 		<div class="plofile-text">
 			<div class="user-introduction">
@@ -59,7 +59,7 @@
 			<div class="post-index-image">
 				<div class="solid">
 					<%= link_to post_path(post) do %>
-						<%= attachment_image_tag(post, :post_image, :fill, 250, 300, fallback: "no_image.jpg", class: "img-rounded") %>
+						<%= attachment_image_tag(post, :post_image, :fill, 250, 300, class: "img-rounded") %>
 					<% end %>
 					<div class="post-index-title">
 						<%= link_to post_path(post) do %>
@@ -90,7 +90,7 @@
 					<div class="post-index-image">
 							<div class="solid">
 								<%= link_to post_path(post) do %>
-									<%= attachment_image_tag(post, :post_image, :fill, 250, 300, fallback: "no_image.jpg", class: "img-rounded") %>
+									<%= attachment_image_tag(post, :post_image, :fill, 250, 300, class: "img-rounded") %>
 								<% end %>
 								<div class="post-index-title">
 									<%= link_to post_path(post) do %>

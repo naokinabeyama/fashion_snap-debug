@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attachment :profile_image
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :profile_image, presence: true
 
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy

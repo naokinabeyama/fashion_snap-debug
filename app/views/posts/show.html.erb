@@ -7,7 +7,7 @@
 					<tr>
 						<td class="user-index-image">
 							<%= link_to user_path(@user) do %>
-								<%= attachment_image_tag(@user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg", class: "img-circle") %>
+								<%= attachment_image_tag(@user, :profile_image, :fill, 150, 150, class: "img-circle") %>
 							<% end %>
 						</td>
 						<td class="user-index-user-name">
@@ -37,7 +37,7 @@
 	<!-- 投稿詳細 -->
 	<div class="post-show-main clearfix">
 		<div class="post-show-post-image">
-			<%= attachment_image_tag @post, :post_image, :fill, 550, 750, fallback: "no_image.jpg", class: "img-rounded" %>
+			<%= attachment_image_tag @post, :post_image, :fill, 550, 750, class: "img-rounded" %>
 		</div>
 			<div class="post-show-post">
 				<div class="post-show-post-text">

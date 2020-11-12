@@ -5,7 +5,10 @@
 	<!-- エラー文 -->
 	<% if @user.errors.any? %>
 		<div id="error_explanation" class="alert alert-danger">
-			<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
+			<h3><%= I18n.t("errors.messages.not_saved",
+	                 count: @user.errors.count,
+	                 resource: @user.class.model_name.human.downcase) %>
+	       </h3>
 				<ul>
 				<% @user.errors.full_messages.each do |message| %>
 					<li><%= message %></li>

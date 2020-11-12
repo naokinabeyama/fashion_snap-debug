@@ -32,7 +32,7 @@
 									<div class="solid">
 									<div class="top-post-image">
 										<%= link_to post_path(post) do %>
-											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
+											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, class: "img-rounded") %>
 										<% end %>
 									</div>
 									<div class="top-post-title">
@@ -57,7 +57,7 @@
 									<div class="solid">
 									<div class="top-post-image">
 										<%= link_to post_path(post) do %>
-											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, fallback: "no_image.jpg", class: "img-rounded") %>
+											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, class: "img-rounded") %>
 										<% end %>
 									</div>
 									<div class="top-post-title">
@@ -102,7 +102,7 @@
 						</div>
 						<div class="top-post-image-follower">
 							<%= link_to user_path(user) do %>
-								<%= attachment_image_tag(user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",  class: "img-circle") %>
+								<%= attachment_image_tag(user, :profile_image, :fill, 180, 180, class: "img-circle") %>
 							<% end %>
 						</div>
 						<div class="top-user-name">
@@ -125,7 +125,7 @@
 						</div>
 						<div class="">
 							<%= link_to user_path(user) do %>
-							<%= attachment_image_tag(user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",  class: "img-circle") %>
+							<%= attachment_image_tag(user, :profile_image, :fill, 180, 180, class: "img-circle") %>
 							<% end %>
 						</div>
 						<div class="top-user-name">
