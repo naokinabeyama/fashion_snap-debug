@@ -4,7 +4,7 @@
 	      		<div class="comment-body bb">
 	        		<div class="comment-avatar clearfix">
 	          			<div class="avatar">
-	          				<%= link_to user_path(post_comment.user) do %>
+	          				<%= link_to user_path(post_comment.user), remote: true do %>
 	            				<%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, class: "img-circle" %>
 	            			<% end %>
 	          			</div>

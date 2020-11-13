@@ -75,7 +75,7 @@
 		<strong> コメント </strong>
 	</div>
 		<div id="comment-<%= @post_comment.id %>">
-			<%= render partial: 'post_comments/comments', locals: {comment: @comment} %>
+			<%= render partial: 'post_comments/comments', locals: {post_comment: @post_comment, post: @post} %>
 		</div>
 			<% unless @user == current_user %>
 				<%= form_with(model: [@post, @post_comment], remote: true) do |f| %>

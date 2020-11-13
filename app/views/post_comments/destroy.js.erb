@@ -1,2 +1,2 @@
-$("#comment-<%= @post_comment.id %>").html("<%= j(render partial: 'post_comments/comments', locals: {comment: @comment}) %>");
+$("#comment-<%= @post_comment.id %>").html("<%= j(render partial: 'post_comments/comments', locals: {post_comment: @post_comment, post: @post}) %>");
 $("text_area").val('')
