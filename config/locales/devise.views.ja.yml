@@ -14,7 +14,6 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
-        profile_image: "プロフィール画像"
       post:
         title: "タイトル"
         body: "説明文"
