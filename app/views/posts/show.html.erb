@@ -55,11 +55,6 @@
 									<%= render partial: 'favorites/favorite', locals: {post: @post} %>
 						</div>
 					</div>
-					<div class="post-show-comment">
-						コメント：
-						<%= @post.post_comments.count %>
-						件
-					</div>
 					<div class="post-show-edit">
 						<% if @user == current_user %>
 							<%= link_to "編集", edit_post_path(@post), class: "text-muted" %>
@@ -70,9 +65,14 @@
 			</div>
 	</div>
 	<!-- 投稿詳細 -->
+	<div class="api">
+		<% @post.tags.each do |tag| %>
+			<div class="api_name"> <%= tag.name %> </div>
+		<% end %>
+	</div>
 	<!-- コメント -->
 	<div class="comment-title">
-		<strong> コメント </strong>
+		<strong> コメント： <%= @post.post_comments.count %>件 </strong>
 	</div>
 		<div id="comment-<%= @post_comment.id %>">
 			<%= render partial: 'post_comments/comments', locals: {post_comment: @post_comment, post: @post} %>

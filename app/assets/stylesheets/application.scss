@@ -404,7 +404,7 @@ footer {
 }
 
 .post-show-main {
-	margin: 70px 0;
+	margin-top: 70px;
 }
 
 .post-show-post-image {
@@ -677,4 +677,17 @@ footer {
 
 .user-name {
 	color: black;
+}
+
+.api {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 10px 0 70px 0;
+}
+
+.api_name {
+	color: #aaaaaa;
+	padding: 0 20px;
+	background-color: #FFFAFA;
+	border: solid 2px #c0c0c0;
 }
