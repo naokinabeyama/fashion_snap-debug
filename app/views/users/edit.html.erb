@@ -21,49 +21,49 @@
 		<table class="edit-table">
 			<tbody>
 				<tr>
-					<div class="field">
-						<td class="edit-plofile">
+					<td class="field">
+						<div class="edit-plofile">
 							<%= f.label :プロフィール画像 %>
-						</td>
-						<td class="edit-image">
+						</div>
+						<div class="edit-image">
 							<%= f.attachment_field :profile_image %>
-						</td>
-					</div>
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<div class="field">
-						<td class="edit-plofile">
+					<td class="field">
+						<div class="edit-plofile">
 							<%= f.label :名前又はニックネーム %>
-						</td>
-						<td class="edit-name">
+						</div>
+						<div class="edit-name">
 							<%= f.text_field :name %>
-						</td>
-					</div>
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<div class="field">
-						<td class="edit-plofile">
+					<td class="field">
+						<div class="edit-plofile">
 							<%= f.label :性別 %>
-						</td>
-						<td class="edit-gender">
+						</div>
+						<div class="edit-gender">
 							<div class="men">
 								<%= f.radio_button :gender, "MEN" %>MEN
 							</div>
 							<div class="women">
 								<%= f.radio_button :gender, "WOMEN" %>WOMEN
 							</div>
-						</td>
-					</div>
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<div class="field">
-						<td class="edit-plofile">
+					<td class="field">
+						<div class="edit-plofile">
 							<%= f.label :自己紹介 %>
-						</td>
-						<td class="edit-introduction">
+						</div>
+						<div class="edit-introduction">
 							<%= f.text_area :introduction, :size=>"40" %>
-						</td>
-					</div>
+						</div>
+					</td>
 				</tr>
 			</tbody>
 		</table>

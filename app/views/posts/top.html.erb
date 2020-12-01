@@ -16,7 +16,7 @@
 				<div class="top-user-post">
 					<% @favorite_ranks.each.with_index(1) do |post, i| %>
 						<% if i == 1 %>
-						<% lastfavorite = post.favorites.count %>
+							<% lastfavorite = post.favorites.count %>
 						<% end %>
 							<% if post.favorites.count != lastfavorite %>
 								<% j = i %>
@@ -30,17 +30,17 @@
 										</div>
 									</div>
 									<div class="solid">
-									<div class="top-post-image">
-										<%= link_to post_path(post) do %>
-											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, class: "img-rounded") %>
-										<% end %>
+										<div class="top-post-image">
+											<%= link_to post_path(post) do %>
+												<%= attachment_image_tag(post, :post_image, :fill, 250, 350, class: "img-rounded") %>
+											<% end %>
+										</div>
+										<div class="top-post-title">
+											<%= link_to post_path(post) do %>
+												<strong class="user-post-title"> <%= post.title %> </strong>
+											<% end %>
+										</div>
 									</div>
-									<div class="top-post-title">
-										<%= link_to post_path(post) do %>
-											<strong class="user-post-title"> <%= post.title %> </strong>
-										<% end %>
-									</div>
-								</div>
 								</div>
 								<% lastfavorite = post.favorites.count %>
 							<% else %>
@@ -55,17 +55,17 @@
 										</div>
 									</div>
 									<div class="solid">
-									<div class="top-post-image">
-										<%= link_to post_path(post) do %>
-											<%= attachment_image_tag(post, :post_image, :fill, 250, 350, class: "img-rounded") %>
-										<% end %>
+										<div class="top-post-image">
+											<%= link_to post_path(post) do %>
+												<%= attachment_image_tag(post, :post_image, :fill, 250, 350, class: "img-rounded") %>
+											<% end %>
+										</div>
+										<div class="top-post-title">
+											<%= link_to post_path(post) do %>
+												<strong class="user-post-title"> <%= post.title %> </strong>
+											<% end %>
+										</div>
 									</div>
-									<div class="top-post-title">
-										<%= link_to post_path(post) do %>
-											<strong class="user-post-title"> <%= post.title %> </strong>
-										<% end %>
-									</div>
-								</div>
 								</div>
 							<% end %>
 						<% end %>
@@ -110,8 +110,8 @@
 								<strong class="user-name"> <%= user.name %> </strong>
 							<% end %>
 						</div>
-					<% lastrelationship = user.followers.count %>
 					</div>
+					<% lastrelationship = user.followers.count %>
 				<% else %>
 					<% lastrelationship = user.followers.count %>
 					<div class="top-follow-ranking">

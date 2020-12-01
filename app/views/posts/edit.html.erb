@@ -20,36 +20,36 @@
 	<div class="edit-text">
 		<table class="edit-table">
 			<tbody>
-			<tr>
-				<div class="field">
-					<td class="edit-plofile">
-						<%= f.label :写真 %>
+				<tr>
+					<td class="field">
+						<div class="edit-plofile">
+							<%= f.label :写真 %>
+						</div>
+						<div class="edit-image">
+							<%= f.attachment_field :post_image %>
+						</div>
 					</td>
-					<td class="edit-image">
-						<%= f.attachment_field :post_image %>
+				</tr>
+				<tr>
+					<td class="field">
+						<div class="edit-plofile">
+							<%= f.label :タイトル %>
+						</div>
+						<div class="edit-name">
+							<%= f.text_field :title %>
+						</div>
 					</td>
-				</div>
-			</tr>
-			<tr>
-				<div class="field">
-					<td class="edit-plofile">
-						<%= f.label :タイトル %>
+				</tr>
+				<tr>
+					<td class="field">
+						<div class="edit-plofile">
+							<%= f.label :説明文 %>
+						</div>
+						<div class="edit-introduction">
+							<%= f.text_area :body, :size=>"40" %>
+						</div>
 					</td>
-					<td class="edit-name">
-						<%= f.text_field :title %>
-					</td>
-				</div>
-			</tr>
-			<tr>
-				<div class="field">
-					<td class="edit-plofile">
-						<%= f.label :説明文 %>
-					</td>
-					<td class="edit-introduction">
-						<%= f.text_area :body, :size=>"40" %>
-					</td>
-				</div>
-			</tr>
+				</tr>
 			</tbody>
 		</table>
 			<div class="edit-btn">

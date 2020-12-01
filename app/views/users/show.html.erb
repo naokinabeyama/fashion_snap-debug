@@ -5,31 +5,31 @@
 			<div class="user-image">
 				<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, class: "img-circle" %>
 			</div>
-		<div class="plofile-text">
-			<div class="user-introduction">
-				<div class="name">
-					<strong> <%= @user.name %> </strong>
+			<div class="plofile-text">
+				<div class="user-introduction">
+					<div class="name">
+						<strong> <%= @user.name %> </strong>
+					</div>
+					<div class="gender">
+						<%= @user.gender %>
+					</div>
+					<div class="introduction">
+						<%= @user.introduction %>
+					</div>
 				</div>
-				<div class="gender">
-					<%= @user.gender %>
-				</div>
-				<div class="introduction">
-					<%= @user.introduction %>
+				<div class="follow-text">
+					<%= link_to user_followings_path(@user) do %>
+						<div class="follow"> フォロー
+							<%= @user.followings.count %>
+						</div>
+						<% end %>
+					<%= link_to user_followers_path(@user) do %>
+						<div class="followers"> フォロワー
+							<%= @user.followers.count %>
+						</div>
+					<%  end %>
 				</div>
 			</div>
-			<div class="follow-text">
-				<%= link_to user_followings_path(@user) do %>
-					<div class="follow"> フォロー
-						<%= @user.followings.count %>
-					</div>
-					<% end %>
-				<%= link_to user_followers_path(@user) do %>
-					<div class="followers"> フォロワー
-						<%= @user.followers.count %>
-					</div>
-				<%  end %>
-			</div>
-		</div>
 
 			<div class="follow-btn">
 				<div id="relationships_buttons_<%= @user.id %>">
@@ -56,28 +56,28 @@
 		<h2 class="user-post-main">〜写真一覧〜</h2>
 		<div class="user-post">
 			<% @posts.each do |post| %>
-			<div class="post-index-image">
-				<div class="solid">
-					<%= link_to post_path(post) do %>
-						<%= attachment_image_tag(post, :post_image, :fill, 250, 300, class: "img-rounded") %>
-					<% end %>
-					<div class="post-index-title">
+				<div class="post-index-image">
+					<div class="solid">
 						<%= link_to post_path(post) do %>
-						<div class="post-title">
-							<strong class="user-post-title"> <%= post.title %> </strong>
-						</div>
+							<%= attachment_image_tag(post, :post_image, :fill, 250, 300, class: "img-rounded") %>
 						<% end %>
-						<div class="post-time">
-							<%= l post.created_at, format: :long %>
-						</div>
-						<div class="user-index-favorite">
-							<div id="favorites_buttons_<%= post.id %>">
-								<%= render partial: 'favorites/favorite', locals: {post: post} %>
+						<div class="post-index-title">
+							<%= link_to post_path(post) do %>
+							<div class="post-title">
+								<strong class="user-post-title"> <%= post.title %> </strong>
+							</div>
+							<% end %>
+							<div class="post-time">
+								<%= l post.created_at, format: :long %>
+							</div>
+							<div class="user-index-favorite">
+								<div id="favorites_buttons_<%= post.id %>">
+									<%= render partial: 'favorites/favorite', locals: {post: post} %>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			<% end %>
 		</div>
 	</div>
@@ -88,27 +88,27 @@
 			<div class="user-post">
 				<% @user.favorite_posts.each do |post| %>
 					<div class="post-index-image">
-							<div class="solid">
+						<div class="solid">
+							<%= link_to post_path(post) do %>
+								<%= attachment_image_tag(post, :post_image, :fill, 250, 300, class: "img-rounded") %>
+							<% end %>
+							<div class="post-index-title">
 								<%= link_to post_path(post) do %>
-									<%= attachment_image_tag(post, :post_image, :fill, 250, 300, class: "img-rounded") %>
+								<div class="post-title">
+									<strong class="user-post-title"> <%= post.title %> </strong>
+								</div>
 								<% end %>
-								<div class="post-index-title">
-									<%= link_to post_path(post) do %>
-									<div class="post-title">
-										<strong class="user-post-title"> <%= post.title %> </strong>
-									</div>
-									<% end %>
-									<div class="post-time">
-										<%= l post.created_at, format: :long %>
-									</div>
-									<div class="user-index-favorite">
-										<div id="favorites_buttons_<%= post.id %>">
-											<%= render partial: 'favorites/favorite', locals: {post: post} %>
-										</div>
+								<div class="post-time">
+									<%= l post.created_at, format: :long %>
+								</div>
+								<div class="user-index-favorite">
+									<div id="favorites_buttons_<%= post.id %>">
+										<%= render partial: 'favorites/favorite', locals: {post: post} %>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
 				<% end %>
 			</div>
 	</div>
