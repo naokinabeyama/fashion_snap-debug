@@ -16,11 +16,13 @@
 						<tr>
 							<td class="user-index-image">
 								<%= link_to user_path(user) do %>
-									<%= attachment_image_tag(user, :profile_image, :fill, 150, 150, class: "img-circle") %>
+									<%= attachment_image_tag(user, :profile_image, :fill, 150, 150,  class: "img-circle") %>
 								<% end %>
 							</td>
 							<td class="user-index-user-name">
-								<strong> <%= user.name %> </strong>
+								<%= link_to user_path(user) do %>
+									<strong class="name-color"> <%= user.name %> </strong>
+								<% end %>
 							</td>
 							<td class="user-index-user-gender">
 								<%= user.gender %>
