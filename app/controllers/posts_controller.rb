@@ -32,7 +32,6 @@ class PostsController < ApplicationController
   end
 
   def create
-  	@post = Post.all
   	@post = Post.new(post_params)
   	@post.user = current_user
   	if @post.save
